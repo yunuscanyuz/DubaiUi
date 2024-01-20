@@ -39,6 +39,7 @@ const SpecialCodeForType = {
   InterruptionCauseGroupID: { value: 28, display: "Duruş Grupları" },
   DowntimeCauseGroupID: { value: 29, display: "Arıza Grupları" },
   WorkTypeID: { value: 30, display: "Arıza Çalışma Tip Grubu" },
+  ProductTypeID: { value: 31, display: "Product Type ID" },
 };
 
 function getCurrentDateTime() {
@@ -346,7 +347,7 @@ async function POSTFetchMethodsRequest(controllerName, params, pageSize, pageNum
     var url = "/Methods/GetByViewWhere";
     const postData = {
       body: {
-        viewName: "vw_" + controllerName + "_Tr",
+        viewName: "vw_" + controllerName,// + "_Tr",
       },
     };
 

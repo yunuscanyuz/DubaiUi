@@ -1,5 +1,5 @@
 ﻿@{
-  ViewData["Title"] = "Ürün Listesi";
+  ViewData["Title"] = "Operation List";
 }
 <!-- SITE MAP START -->
 <div class="col-sm-12">
@@ -43,12 +43,12 @@
       <div class="d-flex gap-2 mb-2 mb-md-0">
         <div class="input-group input-group-outline input-group-sm bg-white rounded">
           <label class="form-label">Arama Yap</label>
-          <input type="text" id="filter-text-boxProducts" class="form-control form-control-sm text-sm"
-            oninput="onFilterTextBoxChanged(gridOptionsProductsApi,this)">
+          <input type="text" id="filter-text-boxOperations" class="form-control form-control-sm text-sm"
+            oninput="onFilterTextBoxChanged(gridOptionsOperationsApi,this)">
         </div>
         <div class="btn-group d-flex">
           <button type="button" class="btn btn-icon px-2 py-1 bg-gradient bg-white border border-custom text-dark mb-0"
-            onclick="customSizeToFit(gridOptionsProductsApi)" data-bs-tooltip="tooltip" data-bs-placement="bottom"
+            onclick="customSizeToFit(gridOptionsOperationsApi)" data-bs-tooltip="tooltip" data-bs-placement="bottom"
             title="Sığdır" data-container="body" data-animation="true">
             <span class="btn-inner--icon">
               <i class="material-icons text-dark fs-6">
@@ -57,7 +57,7 @@
             </span>
           </button>
           <button type="button" class="btn btn-icon px-2 py-1 bg-gradient bg-white border border-custom text-dark mb-0"
-            onclick="customAutoSizeAll(gridOptionsProductsApi,false)" data-bs-tooltip="tooltip"
+            onclick="customAutoSizeAll(gridOptionsOperationsApi,false)" data-bs-tooltip="tooltip"
             data-bs-placement="bottom" title="Otomatik Boyutlandır" data-container="body" data-animation="true">
             <span class="btn-inner--icon">
               <i class="material-icons text-dark fs-6">
@@ -66,7 +66,7 @@
             </span>
           </button>
           <button type="button" class="btn btn-icon px-2 py-1 bg-gradient bg-white border border-custom text-dark mb-0"
-            onclick="customAutoSizeAll(gridOptionsProductsApi,true)" data-bs-tooltip="tooltip"
+            onclick="customAutoSizeAll(gridOptionsOperationsApi,true)" data-bs-tooltip="tooltip"
             data-bs-placement="bottom" title="Otomatik Boyutlandır (Başlıkları Önemseme)" data-container="body"
             data-animation="true">
             <span class="btn-inner--icon">
@@ -76,7 +76,7 @@
             </span>
           </button>
           <button type="button" class="btn btn-icon px-2 py-1 bg-gradient bg-white border border-custom text-dark mb-0"
-            onclick="gridExportExcel(gridOptionsProductsApi)" data-bs-tooltip="tooltip" data-bs-placement="bottom"
+            onclick="gridExportExcel(gridOptionsOperationsApi)" data-bs-tooltip="tooltip" data-bs-placement="bottom"
             title="Excel'e Aktar" data-container="body" data-animation="true">
             <span class="btn-inner--icon">
               <i class="material-icons text-dark fs-6">
@@ -85,7 +85,7 @@
             </span>
           </button>
           <button type="button" class="btn btn-icon px-2 py-1 bg-gradient bg-white border border-custom text-dark mb-0"
-            onclick="gridLayoutSave(gridOptionsProductsApi,'GridProducts',getCookie('testUserId'));"
+            onclick="gridLayoutSave(gridOptionsOperationsApi,'GridOperations',getCookie('testUserId'));"
             data-bs-tooltip="tooltip" data-bs-placement="bottom" title="Düzeni Kaydet" data-container="body"
             data-animation="true">
             <span class="btn-inner--icon">
@@ -98,7 +98,7 @@
       </div>
       <div class="btn-group d-flex">
         <button class="btn btn-icon px-2 py-1 bg-white border border-custom mb-0" data-bs-toggle="modal"
-          data-bs-target="#modalProducts" data-bs-tooltip="tooltip" data-bs-placement="bottom" title="Ekle"
+          data-bs-target="#modalOperations" data-bs-tooltip="tooltip" data-bs-placement="bottom" title="Ekle"
           data-container="body" data-animation="true">
           <span class="btn-inner--icon">
             <i class="material-icons text-dark fs-6 fw-bold">
@@ -107,7 +107,7 @@
           </span>
         </button>
         <button class="btn btn-icon px-2 py-1 bg-white border border-custom mb-0"
-          onclick="agGridSelectedrow(gridOptionsProductsApi, 'Products', 'Güncelle', 'Ürün Listesi');"
+          onclick="agGridSelectedrow(gridOptionsOperationsApi, 'Operations', 'Güncelle', 'Ürün Listesi');"
           data-bs-tooltip="tooltip" data-bs-placement="bottom" title="Düzenle" data-container="body"
           data-animation="true">
           <span class="btn-inner--icon">
@@ -117,7 +117,7 @@
           </span>
         </button>
         <button class="btn btn-icon px-2 py-1 bg-white border border-custom mb-0"
-          onclick="agGridSelectedrow(gridOptionsProductsApi, 'Products', 'Sil', 'Ürün Listesi');"
+          onclick="agGridSelectedrow(gridOptionsOperationsApi, 'Operations', 'Sil', 'Ürün Listesi');"
           data-bs-tooltip="tooltip" data-bs-placement="bottom" title="Sil" data-container="body" data-animation="true">
           <span class="btn-inner--icon">
             <i class="material-icons text-dark fs-6">
@@ -130,7 +130,7 @@
     <!-- CARD HEADER END -->
     <!-- CARD BODY START -->
     <div class="card-body p-3 grid-container">
-      <div id="GridProducts" class="ag-theme-alpine">
+      <div id="GridOperations" class="ag-theme-alpine">
       </div>
     </div>
     <!-- CARD BODY END -->
@@ -140,7 +140,7 @@
 
 
 <!-- MODAL START -->
-<div class="modal fade" id="modalProducts" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+<div class="modal fade" id="modalOperations" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
   style="z-index: 9999;" aria-hidden="true">
   <div class="modal-dialog modal-dialog-top" role="document">
     <div class="modal-content">
@@ -156,7 +156,7 @@
       <!-- MODAL BODY START  -->
       <div class="modal-body">
         <div class="row">
-          <form id="formProducts">
+          <form id="formOperations">
             <div class="col-sm-12 ">
               <div class="col-12 mb-2 d-none">
                 <div class="input-group input-group-static">
@@ -166,10 +166,19 @@
               </div>
               <div class="col-12 mb-2">
                 <div class="input-group input-group-static">
-                  <label class="fw-bolder text-sm mb-1" id="lbl_id" for="id">Name</label>
+                  <label class="fw-bolder text-sm mb-1" id="lbl_name" for="name">Name</label>
                   <input type="text" class="form-control form-control-sm form-control-custom" placeholder="name" id="name">
                 </div>
               </div>
+
+                  <div class="col-12 mb-2">
+                <div class="input-group input-group-static">
+                  <label class="fw-bolder text-sm mb-1" id="lbl_description" for="description">Desctription</label>
+                  <input type="text" class="form-control form-control-sm form-control-custom" placeholder="description" id="description">
+                </div>
+              </div>
+
+              
 
 
               <div class="col-12 mb-2 d-none">
@@ -193,16 +202,7 @@
                     id="active">
                 </div>
               </div>
-              <div class="col-12 mb-2">
-                <div class="dropdown-custom">
-                  <label id="lbl_productTypeID" for="productTypeID" class="fw-bolder mb-1 ms-0"> Product Type
-                    Tipi</label>
-                  <select name="productTypeID" id="productTypeID">
-                    <option value="">Lütfen bir seçim yapınız...</option>
-                  </select>
-                </div>
-              </div>
-              
+            
              
             </div>
           </form>
@@ -211,11 +211,11 @@
       <!-- MODAL BODY END  -->
       <!-- MODAL FOOTER START  -->
       <div class="modal-footer">
-        <button type="button" id="closeProducts"
+        <button type="button" id="closeOperations"
           class="btn btn-sm btn-outline-secondary shadow border border-custom m-0 me-2"
           data-bs-dismiss="modal">Kapat</button>
-        <button type="button" id="submitProducts" class="btn btn-sm bg-gradient btn-brand-color shadow m-0 me-1"
-          onclick="ModalInsertAndUpdate('modalProducts');">Kaydet</button>
+        <button type="button" id="submitOperations" class="btn btn-sm bg-gradient btn-brand-color shadow m-0 me-1"
+          onclick="ModalInsertAndUpdate('modalOperations');">Kaydet</button>
       </div>
       <!-- MODAL FOOTER END  -->
     </div>
@@ -225,14 +225,14 @@
 <!-- MODAL SCRIPT -->
 <script>
 
-  initializeGrid("Products", null, 300, 1);
+  initializeGrid("Operations", null, 300, 1);
 
   $(document).ready(function () {
-    ModalOpenMethods("Products", "update", "insert", "defaultFunction2");
+    ModalOpenMethods("Operations", "update", "insert", "defaultFunction2");
   });
 
   function SubmitForm() {
-    ModalInsertAndUpdate("modalProducts");
+    ModalInsertAndUpdate("modalOperations");
   }
 
   async function update(data) {
