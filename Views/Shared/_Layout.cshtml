@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="apple-touch-icon" sizes="76x76" href="~/assets/img/icon/favicon.png">
+    <link rel="icon" type="image/png" href="~/assets/img/icon/favicon.png">
+    <title>@ViewData["Title"] - IpekisMesUi</title>
+    <!-- Fonts and icons -->
+    <link rel="stylesheet" type="text/css"
+        href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
+    <!-- Font Awesome Icons -->
+    <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+    <!-- Material Symbols -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,300,1,0" />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Tangut&display=swap" rel="stylesheet">
+    <!-- CSS Files -->
+    <link id="pagestyle" href="~/assets/css/material-dashboard.css?v=3.0.6" rel="stylesheet" />
+    <link id="pagestyle" href="~/assets/css/custom.css" rel="stylesheet" />
+    <!-- Nepcha Analytics (nepcha.com) -->
+    <!-- Nepcha is a easy-to-use web analytics. No cookies and fully compliant with GDPR, CCPA and PECR. -->
+    <script src="https://cdn.jsdelivr.net/npm/ag-grid-enterprise@31.0.1/dist/ag-grid-enterprise.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/ag-grid-enterprise/dist/ag-grid-enterprise.js"></script>  -->
+    <script src="~/assets/js/plugins/sweetalert.min.js"></script>
+    <script src="~/assets/js/core/jquery-3.7.1.min.js"></script>
+    <script src="~/assets/js/customJs/staticVariable.js"></script>
+    <script src="~/assets/js/customJs/dropdownFill.js"></script>
+    <script src="~/assets/js/customJs/insertMethod.js"></script>
+    <script src="~/assets/js/customJs/agGrid-tr.js"></script>
+    <script src="~/assets/js/customJs/AgGridConfiguration.js"></script>
+    <script src="~/assets/js/customJs/modalcreate.js"></script>
+    <script src="~/assets/js/plugins/apexcharts.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js"
+        integrity="sha512-a+SUDuwNzXDvz4XrIcXHuCf089/iJAoN4lmrXJg18XnduKK6YlDHNRalv4yd1N40OKI80tFidF+rqTFKGPoWFQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+
+<body class="g-sidenav-show bg-gray-100">
+    <!-- SIDE NAVBAR START -->
+    <aside
+        class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 bg-gradient-dark"
+        data-color="brand-color" id="sidenav-main">
+        <!-- SIDE NAVBAR HEADER START -->
+        <div class="sidenav-header">
+            <i class="fas fa-times p-3 cursor-pointer text-white opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
+                aria-hidden="true" id="iconSidenav"></i>
+            <a class="navbar-brand m-0 px-4 text-center" href="/Home" target="_blank">
+                @* <img src="/assets\img\logo\cropped-fav-1-192x192.svg" class="navbar-brand-img" alt="main_logo"> *@
+                <img src="/assets/img/icon/favicon.png" class="navbar-brand-img" alt="main_logo">
+                <span class="font-noto-serif fs-5 text-white letter-spacing-5 align-bottom ms-1">İPEKİŞ</span>
+            </a>
+        </div>
+        <!-- SIDE NAVBAR HEADER END -->
+        <hr class="horizontal light mt-0 mb-2">
+        <div class="collapse navbar-collapse w-auto h-auto" id="sidenav-collapse-main">
+            <ul id="sidenav-main-menu" class="navbar-nav">
+                <!-- COMPANY DESCRIPTION -->
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="#companyDescription" data-bs-toggle="collapse"
+                        aria-controls="companyDescription" role="button" aria-expanded="false">
+                        <span class="sidenav-mini-icon">
+                            <i class="material-icons fs-4 text-white">
+                                apartment
+                            </i>
+                        </span>
+                        <span class="sidenav-normal ms-1"> Firma Tanımları <b class="caret"></b>
+                        </span>
+                    </a>
+                    <div class="collapse" id="companyDescription">
+                        <ul id="sidenav-main-menu-items" class="nav">
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="/Organization">
+                                    <span class="sidenav-mini-icon ms-3">
+                                        <i class="material-icons align-middle text-xs">
+                                            fiber_manual_record
+                                        </i>
+                                    </span>
+                                    <span class="sidenav-normal ms-1"> Organizasyon </span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white " href="/Company">
+                                    <span class="sidenav-mini-icon ms-3">
+                                        <i class="material-icons align-middle text-xs">
+                                            fiber_manual_record
+                                        </i>
+                                    </span>
+                                    <span class="sidenav-normal ms-1"> Şirket </span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white " href="/Branch">
+                                    <span class="sidenav-mini-icon ms-3">
+                                        <i class="material-icons align-middle text-xs">
+                                            fiber_manual_record
+                                        </i>
+                                    </span>
+                                    <span class="sidenav-normal ms-1"> Şube </span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="/Department">
+                                    <span class="sidenav-mini-icon ms-3">
+                                        <i class="material-icons align-middle text-xs">
+                                            fiber_manual_record
+                                        </i>
+                                    </span>
+                                    <span class="sidenav-normal ms-1"> Bölüm </span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white " href="/Group">
+                                    <span class="sidenav-mini-icon ms-3">
+                                        <i class="material-icons align-middle text-xs">
+                                            fiber_manual_record
+                                        </i>
+                                    </span>
+                                    <span class="sidenav-normal ms-1"> Grup </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <!-- LOCATION DESCRIPTION -->
+                <li class="nav-item ">
+                    <a class="nav-link text-white" href="#locationDescription" data-bs-toggle="collapse"
+                        aria-controls="locationDescription" role="button" aria-expanded="false">
+                        <span class="sidenav-mini-icon">
+                            <i class="material-icons fs-4 text-white">
+                                location_on
+                            </i>
+                        </span>
+                        <span class="sidenav-normal ms-1"> Lokasyon Tanımları
+                            <b class="caret">
+                            </b>
+                        </span>
+                    </a>
+                    <div class="collapse " id="locationDescription">
+                        <ul id="sidenav-main-menu-item" class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="/Country">
+                                    <span class="sidenav-mini-icon ms-3">
+                                        <i class="material-icons align-middle text-xs">
+                                            fiber_manual_record
+                                        </i>
+                                    </span>
+                                    <span class="sidenav-normal ms-1"> Ülke </span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="/City">
+                                    <span class="sidenav-mini-icon ms-3">
+                                        <i class="material-icons align-middle text-xs">
+                                            fiber_manual_record
+                                        </i>
+                                    </span>
+                                    <span class="sidenav-normal ms-1"> Şehir </span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white " href="/District">
+                                    <span class="sidenav-mini-icon ms-3">
+                                        <i class="material-icons align-middle text-xs">
+                                            fiber_manual_record
+                                        </i>
+                                    </span>
+                                    <span class="sidenav-normal ms-1"> İlçe </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <!-- PRODUCT MANAGEMENT -->
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="#productManagement" data-bs-toggle="collapse"
+                        aria-controls="productManagement" role="button" aria-expanded="false">
+                        <span class="sidenav-mini-icon">
+                            <i class="material-symbols-outlined fs-4 text-white">
+                                package_2
+                            </i>
+                        </span>
+                        <span class="sidenav-normal ms-1"> Stok Yönetimi <b class="caret"></b></span>
+                    </a>
+                    <div class="collapse" id="productManagement">
+                        <ul id="sidenav-main-menu-item" class="nav">
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="/Product">
+                                    <span class="sidenav-mini-icon ms-3">
+                                        <i class="material-icons align-middle text-xs">
+                                            fiber_manual_record
+                                        </i>
+                                    </span>
+                                    <span class="sidenav-normal ms-1"> Ürün Listesi </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <!-- PANEL MANAGEMENT -->
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="#panelManagement" data-bs-toggle="collapse"
+                        aria-controls="panelManagement" role="button" aria-expanded="false">
+                        <span class="sidenav-mini-icon">
+                            <i class="material-symbols-outlined fs-4 text-white">
+                                video_label
+                            </i>
+                        </span>
+                        <span class="sidenav-normal ms-1"> Panel Yönetimi <b class="caret"></b></span>
+                    </a>
+                    <div class="collapse" id="panelManagement">
+                        <ul id="sidenav-main-menu-item" class="nav">
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="/Panel">
+                                    <span class="sidenav-mini-icon ms-3">
+                                        <i class="material-icons align-middle text-xs">
+                                            fiber_manual_record
+                                        </i>
+                                    </span>
+                                    <span class="sidenav-normal ms-1"> Panel </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <!-- MACHINE MANAGEMENT -->
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="#machineManagement" data-bs-toggle="collapse"
+                        aria-controls="machineManagement" role="button" aria-expanded="false">
+                        <span class="sidenav-mini-icon">
+                            <i class="material-symbols-outlined fs-4 text-white">
+                                precision_manufacturing
+                            </i>
+                        </span>
+                        <span class="sidenav-normal ms-1"> Makine Yönetimi <b class="caret"></b></span>
+                    </a>
+                    <div class="collapse" id="machineManagement">
+                        <ul id="sidenav-main-menu-item" class="nav">
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="/WorkCenter">
+                                    <span class="sidenav-mini-icon ms-3">
+                                        <i class="material-icons align-middle text-xs">
+                                            fiber_manual_record
+                                        </i>
+                                    </span>
+                                    <span class="sidenav-normal ms-1"> Makine </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <!-- INTERRUPTION & FAULT MANAGEMENT -->
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="#interruptionFaultManagement" data-bs-toggle="collapse"
+                        aria-controls="interruptionFaultManagement" role="button" aria-expanded="false">
+                        <span class="sidenav-mini-icon">
+                            <i class="material-symbols-outlined fs-4 text-white">
+                                construction
+                            </i>
+                        </span>
+                        <span class="sidenav-normal ms-1"> Duruş & Arıza Yönetimi <b class="caret"></b></span>
+                    </a>
+                    <div class="collapse" id="interruptionFaultManagement">
+                        <ul id="sidenav-main-menu-item" class="nav">
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="/InterruptionCause">
+                                    <span class="sidenav-mini-icon ms-3">
+                                        <i class="material-icons align-middle text-xs">
+                                            fiber_manual_record
+                                        </i>
+                                    </span>
+                                    <span class="sidenav-normal ms-1"> Duruş Tanım Listesi </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <!-- ORDER OPERATION MANAGEMENT -->
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="#orderOperationManagement" data-bs-toggle="collapse"
+                        aria-controls="orderOperationManagement" role="button" aria-expanded="false">
+                        <span class="sidenav-mini-icon">
+                            <i class="material-symbols-outlined fs-4 text-white">
+                                engineering
+                            </i>
+                        </span>
+                        <span class="sidenav-normal ms-1"> İş Emri Yönetimi <b class="caret"></b></span>
+                    </a>
+                    <div class="collapse" id="orderOperationManagement">
+                        <ul id="sidenav-main-menu-item" class="nav">
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="/ShopOrderOperation">
+                                    <span class="sidenav-mini-icon ms-3">
+                                        <i class="material-icons align-middle text-xs">
+                                            fiber_manual_record
+                                        </i>
+                                    </span>
+                                    <span class="sidenav-normal ms-1"> Üretim İş Emirleri </span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="/ShopOrderMaterialAlloc">
+                                    <span class="sidenav-mini-icon ms-3">
+                                        <i class="material-icons align-middle text-xs">
+                                            fiber_manual_record
+                                        </i>
+                                    </span>
+                                    <span class="sidenav-normal ms-1"> Üretim Reçetesi </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <!-- SHIFT & STAFF MANAGEMENT -->
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="#shiftStaffManagement" data-bs-toggle="collapse"
+                        aria-controls="shiftStaffManagement" role="button" aria-expanded="false">
+                        <span class="sidenav-mini-icon">
+                            <i class="material-symbols-outlined fs-4 text-white">
+                                manage_accounts
+                            </i>
+                        </span>
+                        <span class="sidenav-normal ms-1 me-1"> Vardiya & Personel Yönetimi <b class="caret"></b></span>
+                    </a>
+                    <div class="collapse" id="shiftStaffManagement">
+                        <ul id="sidenav-main-menu-item" class="nav">
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="/Shift">
+                                    <span class="sidenav-mini-icon ms-3">
+                                        <i class="material-icons align-middle text-xs">
+                                            fiber_manual_record
+                                        </i>
+                                    </span>
+                                    <span class="sidenav-normal ms-1"> Vardiya </span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="/CompanyPerson">
+                                    <span class="sidenav-mini-icon ms-3">
+                                        <i class="material-icons align-middle text-xs">
+                                            fiber_manual_record
+                                        </i>
+                                    </span>
+                                    <span class="sidenav-normal ms-1"> Operatör Listesi </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <!-- OTHER DESCRIPTION -->
+                <li class="nav-item ">
+                    <a class="nav-link text-white" href="#otherDescription" data-bs-toggle="collapse"
+                        aria-controls="otherDescription" role="button" aria-expanded="false">
+                        <span class="sidenav-mini-icon">
+                            <i class="material-icons align-middle fs-4 text-white">
+                                more_horiz
+                            </i>
+                        </span>
+                        <span class="sidenav-normal ms-1"> Diğer Tanımlar <b class="caret"></b></span>
+                    </a>
+                    <div class="collapse" id="otherDescription">
+                        <ul id="sidenav-main-menu-item" class="nav">
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="/Specialcode">
+                                    <span class="sidenav-mini-icon ms-3">
+                                        <i class="material-icons align-middle text-xs">
+                                            fiber_manual_record
+                                        </i>
+                                    </span>
+                                    <span class="sidenav-normal ms-1"> Özel Kod Tanımları </span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white " href="/OpcSetting">
+                                    <span class="sidenav-mini-icon ms-3">
+                                        <i class="material-icons align-middle text-xs">
+                                            fiber_manual_record
+                                        </i>
+                                    </span>
+                                    <span class="sidenav-normal ms-1"> OPC Tanımları </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <!-- SETTINGS -->
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="#settings" data-bs-toggle="collapse" aria-controls="settings"
+                        role="button" aria-expanded="false">
+                        <span class="sidenav-mini-icon">
+                            <i class="material-icons fs-4 text-white">
+                                settings
+                            </i>
+                        </span>
+                        <span class="sidenav-normal ms-1"> Ayarlar <b class="caret"></b></span>
+                    </a>
+                    <div class="collapse " id="settings">
+                        <ul id="sidenav-main-menu-item" class="nav">
+                            @* <li class="nav-item">
+                            <a class="nav-link text-white" href="/User">
+                            <span class="sidenav-mini-icon ms-3">
+                            <i class="material-icons align-middle text-xs">
+                            fiber_manual_record
+                            </i>
+                            </span>
+                            <span class="sidenav-normal ms-1"> Kullanıcı Ayarları </span>
+                            </a>
+                            </li> *@
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="/Authorization">
+                                    <span class="sidenav-mini-icon ms-3">
+                                        <i class="material-icons align-middle text-xs">
+                                            fiber_manual_record
+                                        </i>
+                                    </span>
+                                    <span class="sidenav-normal ms-1"> Kullanıcı Yetkileri </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </aside>
+    <!-- SIDE NAVBAR END -->
+
+    <!-- TOP NAVBAR START -->
+    <div class="main-content position-relative max-height-vh-100 h-100">
+        <!-- NAVBAR START -->
+        <nav class="navbar navbar-main navbar-expand-lg position-sticky bg-white border-radius-xl z-index-sticky mt-3 top-1 px-0 py-1 mx-3 "
+            id="navbarBlur" data-scroll="true">
+            <div class="container-fluid px-3">
+                <div class="sidenav-toggler sidenav-toggler-inner d-xl-block d-none ms-1 me-2">
+                    <a href="javascript:;" class="nav-link text-body p-0">
+                        <div class="sidenav-toggler-inner">
+                            <i class="sidenav-toggler-line"></i>
+                            <i class="sidenav-toggler-line"></i>
+                            <i class="sidenav-toggler-line"></i>
+                        </div>
+                    </a>
+                </div>
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Home">Anasayfa </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/home">Dashboard</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a id="navbarDropdownMenuLink" class="nav-link dropdown-toggle" href="javascript:;"
+                            data-bs-toggle="dropdown">
+                            Canlı Veri İzleme
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end p-2 me-sm-n4" style="top:21%"
+                            aria-labelledby="navbarDropdownMenuLink">
+                            <li class="">
+                                <a class="dropdown-item border-radius-md" href="javascript:;">
+                                    <div class="d-flex align-items-center">
+                                        <span class="material-symbols-outlined">
+                                            bolt
+                                        </span>
+                                        <div class="ms-2">
+                                            <p class="text-sm font-weight-normal my-auto">
+                                                Current
+                                            </p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="">
+                                <a class="dropdown-item border-radius-md" href="javascript:;">
+                                    <div class="d-flex align-items-center">
+                                        <span class="material-symbols-outlined fw-bold">
+                                            trending_up
+                                        </span>
+                                        <div class="ms-2">
+                                            <p class="text-sm font-weight-normal my-auto">
+                                                Voltage
+                                            </p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item border-radius-md" href="javascript:;">
+                                    <div class="d-flex align-items-center">
+                                        <span class="material-symbols-outlined fw-bold">
+                                            airwave
+                                        </span>
+                                        <div class="ms-2">
+                                            <p class="text-sm font-weight-normal my-auto">
+                                                Harmonic
+                                            </p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="collapse navbar-collapse justify-content-end justify-content-md-end mt-0 mb-1 mb-md-0"
+                    id="navbar">
+                    <div class="d-flex align-items-center">
+                        <ul class="navbar-nav pe-2">
+                            <li class="nav-item d-xl-none me-auto d-flex align-items-center">
+                                <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
+                                    <div class="sidenav-toggler-inner">
+                                        <i class="sidenav-toggler-line"></i>
+                                        <i class="sidenav-toggler-line"></i>
+                                        <i class="sidenav-toggler-line"></i>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="nav-item ps-3">
+                                <a href="javascript:;" class="nav-link text-body p-0 position-relative" target="_blank">
+                                    <span>
+                                        <i class="material-icons align-middle">
+                                            account_circle
+                                        </i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="nav-item dropdown px-3">
+                                <a href="javascript:;" class="nav-link text-body p-0 position-relative"
+                                    id="dropdownSettings" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="material-icons fixed-plugin-button-nav cursor-pointer align-middle">
+                                        settings
+                                    </i>
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-end p-2 me-sm-n4"
+                                    aria-labelledby="dropdownSettings">
+                                    <li class="mb-2">
+                                        <a class="dropdown-item border-radius-md" href="/User">
+                                            <div class="d-flex align-items-center">
+                                                <span class="material-symbols-outlined">
+                                                    manage_accounts
+                                                </span>
+                                                <div class="ms-2">
+                                                    <p class="text-sm font-weight-normal my-auto">
+                                                        Kullanıcı Ayarları
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="">
+                                        <a class="dropdown-item border-radius-md" href="/Auth">
+                                            <div class="d-flex align-items-center">
+                                                <span class="material-symbols-outlined">
+                                                    passkey
+                                                </span>
+                                                <div class="ms-2">
+                                                    <p class="text-sm font-weight-normal my-auto">
+                                                        Kullanıcı Yetkileri
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="javascript:;" class="nav-link text-body p-0 position-relative"
+                                    id="dropdownNotifications" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <span>
+                                        <i class="material-icons cursor-pointer align-middle">
+                                            notifications
+                                        </i>
+                                    </span>
+                                    <span
+                                        class="position-absolute top-5 start-100 translate-middle badge rounded-pill bg-danger border border-white small py-1 px-2">
+                                        <span class="small">11</span>
+                                        <span class="visually-hidden">unread notifications</span>
+                                    </span>
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-end p-2 me-sm-n4"
+                                    aria-labelledby="dropdownNotifications">
+                                    <li class="">
+                                        <a class="dropdown-item border-radius-md" href="javascript:;">
+                                            <div class="d-flex align-items-center">
+                                                <span class="material-icons">email</span>
+                                                <div class="ms-2">
+                                                    <p class="text-sm font-weight-normal my-auto">
+                                                        Check new messages
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="">
+                                        <a class="dropdown-item border-radius-md" href="javascript:;">
+                                            <div class="d-flex align-items-center">
+                                                <span class="material-icons">podcasts</span>
+                                                <div class="ms-2">
+                                                    <p class="text-sm font-weight-normal my-auto">
+                                                        Manage podcast session
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item border-radius-md" href="javascript:;">
+                                            <div class="d-flex align-items-center">
+                                                <span class="material-icons">shopping_cart</span>
+                                                <div class="ms-2">
+                                                    <p class="text-sm font-weight-normal my-auto">
+                                                        Payment successfully completed
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <!-- NAVBAR END -->
+
+        <!-- TOAST ALERT START -->
+        <div class="toast fade p-2 mt-2 bg-gradient-info hide position-absolute p-0 top-10 end-0" style="z-index:
+        9999;" role="alert" aria-live="assertive" id="infoToast2" aria-atomic="true">
+            <div class="toast-header bg-transparent border-0">
+                <i class="material-icons text-black me-2">
+                </i>
+                <span class="me-auto text-white font-weight-bold"> </span>
+                <small class="text-white">Şimdi</small>
+                <i class="fas fa-times text-md text-white ms-3 cursor-pointer" data-bs-dismiss="toast"
+                    aria-label="Close" aria-hidden="true"></i>
+            </div>
+            <hr class="horizontal light m-0">
+            <div class="toast-body text-white">
+
+            </div>
+        </div>
+        <!-- TOAST ALERT END -->
+
+        <div class="container-fluid main-container py-2 ">
+            <div class="row ">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+    <!-- TOP NAVBAR END -->
+
+    <!--   Core JS Files   -->
+    <script src="~/assets/js/core/popper.min.js"></script>
+    <script src="~/assets/js/core/bootstrap.min.js"></script>
+    <script src="~/assets/js/plugins/perfect-scrollbar.min.js"></script>
+    <script src="~/assets/js/plugins/smooth-scrollbar.min.js"></script>
+    <!-- Kanban scripts -->
+    <script src="~/assets/js/plugins/dragula/dragula.min.js"></script>
+    <script src="~/assets/js/plugins/jkanban/jkanban.js"></script>
+    <script>
+        var win = navigator.platform.indexOf('Win') > -1;
+        if (win && document.querySelector('#sidenav-scrollbar')) {
+            var options = {
+                damping: '0.5'
+            }
+            Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+        }
+    </script>
+    <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
+    <script src="~/assets/js/material-dashboard.js"></script>
+
+    <script>
+        // Function to set the active class based on the current page
+        function setActiveClass() {
+            try {
+                var currentPage = window.location.pathname.split('/').pop();
+                var currentLink = document.querySelector(`a[href*="/${currentPage}"]`);
+
+                // Set "active" class for the current link and its parents
+                if (currentLink) {
+                    currentLink.classList.add("active");
+
+                    var parentCollapse = currentLink.closest(".collapse");
+                    if (parentCollapse) {
+                        parentCollapse.classList.add("show");
+
+                        var parentNavLink = parentCollapse.previousElementSibling;
+                        if (parentNavLink && parentNavLink.classList.contains("nav-link")) {
+                            parentNavLink.classList.add("active");
+                        }
+                    }
+
+                    var parentNavItem = currentLink.closest(".nav-item");
+                    if (parentNavItem) {
+                        parentNavItem.classList.add("active");
+
+                        var grandparentNavItem = parentNavItem.closest(".nav-item");
+                        if (grandparentNavItem) {
+                            grandparentNavItem.classList.add("active");
+                        }
+                    }
+                }
+            } catch (error) {
+                console.error("An error occurred:", error);
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", setActiveClass);
+
+        // Adding tooltip to the 'Add' button
+        document.addEventListener('DOMContentLoaded', function () {
+            var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-tooltip="tooltip"]'));
+
+            // Create tooltips for the initial set of elements
+            var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+                return new bootstrap.Tooltip(tooltipTriggerEl);
+            });
+
+            $(".btn-group .btn-icon").click(function () {
+                $("[data-bs-tooltip='tooltip']").tooltip('hide');
+            });
+        });
+
+        // Dropdown-hover menu delay settings
+        document.addEventListener('DOMContentLoaded', function () {
+            if (document.querySelector('.dropdown-hover')) {
+                const dropdown = document.querySelector('.dropdown-hover');
+
+                dropdown.addEventListener('mouseenter', function () {
+                    const menu = this.querySelector('.dropdown-menu');
+                    menu.classList.add('show');
+                    setTimeout(function () {
+                        menu.classList.remove('show');
+                    }, 900)
+                });
+            }
+        });
+
+        function handleModalClosed() {
+            const closedModalId = $(this).attr('id');
+            console.log(`Modal kapatıldı: ${closedModalId}`);
+            var closeModalInFormName = closedModalId.replace('modal', "form");
+            var controllerName = closedModalId.replace('modal', "");
+            var closeModalInSubmitButton = closedModalId.replace('modal', "submit");
+            console.log(`modal içerisindeki kapanan formun id değeri ${closeModalInFormName}`);
+
+            //id değerini sıfırlama
+            $(`#${closeModalInFormName} #id`).val('');
+            const formInSubmitButtonId = $(`#${closeModalInSubmitButton}`);
+            console.log(`modal içerisindeki buttonun su andaki text değeri : ${formInSubmitButtonId.text()}`);
+            formInSubmitButtonId.text('Kaydet');
+
+            if (controllerName === "WorkCenters") {
+                formInSubmitButtonId.text('Güncelle');
+            }
+
+            var mSelector = $("#" + closeModalInFormName);
+            const inputElements = mSelector.find("input");
+            //console.log("modalReset inputları seçti");
+            inputElements.each(function () {
+                const input = $(this);
+                input.val("");
+                if (input.attr("type") === "checkbox") {
+                    input.prop("checked", false);
+                }
+            });
+            mSelector.find("select").empty();
+            mSelector.find("#id").val(null);
+            const submitCountry = mSelector.find("#submit" + controllerName);
+            if (submitCountry && controllerName != "WorkCenters") {
+                submitCountry.text("Kaydet");
+            }
+        }
+        // Modal kapatıldığında olay dinleyicisini ekleyin
+        $('.modal').on('hidden.bs.modal', handleModalClosed);
+
+
+
+        setCookie("testUserId", 'a073d740-8c21-42d9-beac-a4191a4b1fcd', 7);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,579 @@
+@{
+  ViewData["Title"] = "Makine Bilgileri";
+}
+
+<div class="col-sm-12">
+  <div class="row">
+    <div class="col-sm-6">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb bg-transparent mb-1 py-1 ps-3">
+          <li class="breadcrumb-item text-sm">
+            <a class="opacity-3 text-dark" href="javascript:;">
+              <svg width="12px" height="12px" class="mb-1" viewBox="0 0 45 40" version="1.1"
+                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <title>shop </title>
+                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                  <g transform="translate(-1716.000000, -439.000000)" fill="#252f40" fill-rule="nonzero">
+                    <g transform="translate(1716.000000, 291.000000)">
+                      <g transform="translate(0.000000, 148.000000)">
+                        <path
+                          d="M46.7199583,10.7414583 L40.8449583,0.949791667 C40.4909749,0.360605034 39.8540131,0 39.1666667,0 L7.83333333,0 C7.1459869,0 6.50902508,0.360605034 6.15504167,0.949791667 L0.280041667,10.7414583 C0.0969176761,11.0460037 -1.23209662e-05,11.3946378 -1.23209662e-05,11.75 C-0.00758042603,16.0663731 3.48367543,19.5725301 7.80004167,19.5833333 L7.81570833,19.5833333 C9.75003686,19.5882688 11.6168794,18.8726691 13.0522917,17.5760417 C16.0171492,20.2556967 20.5292675,20.2556967 23.494125,17.5760417 C26.4604562,20.2616016 30.9794188,20.2616016 33.94575,17.5760417 C36.2421905,19.6477597 39.5441143,20.1708521 42.3684437,18.9103691 C45.1927731,17.649886 47.0084685,14.8428276 47.0000295,11.75 C47.0000295,11.3946378 46.9030823,11.0460037 46.7199583,10.7414583 Z">
+                        </path>
+                        <path
+                          d="M39.198,22.4912623 C37.3776246,22.4928106 35.5817531,22.0149171 33.951625,21.0951667 L33.92225,21.1107282 C31.1430221,22.6838032 27.9255001,22.9318916 24.9844167,21.7998837 C24.4750389,21.605469 23.9777983,21.3722567 23.4960833,21.1018359 L23.4745417,21.1129513 C20.6961809,22.6871153 17.4786145,22.9344611 14.5386667,21.7998837 C14.029926,21.6054643 13.533337,21.3722507 13.0522917,21.1018359 C11.4250962,22.0190609 9.63246555,22.4947009 7.81570833,22.4912623 C7.16510551,22.4842162 6.51607673,22.4173045 5.875,22.2911849 L5.875,44.7220845 C5.875,45.9498589 6.7517757,46.9451667 7.83333333,46.9451667 L19.5833333,46.9451667 L19.5833333,33.6066734 L27.4166667,33.6066734 L27.4166667,46.9451667 L39.1666667,46.9451667 C40.2482243,46.9451667 41.125,45.9498589 41.125,44.7220845 L41.125,22.2822926 C40.4887822,22.4116582 39.8442868,22.4815492 39.198,22.4912623 Z">
+                        </path>
+                      </g>
+                    </g>
+                  </g>
+                </g>
+              </svg>
+            </a>
+          </li>
+          <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Makine Yönetimi</a>
+          </li>
+          <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="/WorkCenter">Makine</a>
+          </li>
+          <li class="breadcrumb-item text-sm text-dark fw-bold active" aria-current="page">@ViewData["Title"]</li>
+        </ol>
+      </nav>
+    </div>
+    <div class="col-sm-6">
+      <div class="row">
+        <div class="col-sm-12 mb-1">
+          <div class="row justify-content-end">
+            <div class="col-6">
+              <div class="dropdown-custom">
+                <select name="" id="workCenter_topSelect" class="shadow">
+                  <option value="">Lütfen bir seçim yapınız...</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="dropdown-custom">
+                <select name="" id="workCenter_topmenu" class="shadow"
+                  onchange="redirectToWorkCenterAnotherPage(this.value)">
+                  <option value="WorkCenterDetail">Makine Bilgileri</option>
+                  <option value="WorkCenterEnergy">Enerji Ayarları</option>
+                  <option value="WorkCenterOPCSettings" selected>Makine OPC Ayarları</option>
+                  <option value="WorkCenterAutonomousMaintenance">Otonom Bakım Listesi</option>
+                  <option value="WorkCenterDocumentPaths">Makine Döküman Yolu Listesi</option>
+                  <option value="WorkCenterDowntime">Makine Duruşları</option>
+                  <option value="WorkCenterDowntimeCause">Makine Arıza Duruşları</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- SITE MAP END -->
+
+<!-- DETAIL CARDS START -->
+<div class="col-sm-12">
+  <div id="card-detail">
+    <div class="row">
+      <!-- COMPANY INFORMATION CARD START -->
+      <div class="col-sm-12 col-md-6 mb-3">
+        <div class="card shadow-custom border border-custom h-100">
+          <div class="card-header border-bottom bg-gray-200 bg-gradient shadow py-2">
+            <h6 class="mb-0 text-sm lh-base">Firma Bilgileri</h6>
+          </div>
+          <div class="card-body py-3 m-0 text-sm text-dark">
+            <div class="mb-1">
+              <label class="text-dark ms-0 fw-bold">Firma:</label> <span id="lblCompany_Name"></span>
+            </div>
+            <div class="mb-1">
+              <label class="text-dark ms-0 fw-bold">Şube:</label> <span id="lblBranch_Name"></span>
+            </div>
+            <div class="mb-1">
+              <label class="text-dark ms-0 fw-bold">Bölüm:</label> <span id="lblDepartment_Name"></span>
+            </div>
+            <div class="mb-1">
+              <label class="text-dark ms-0 fw-bold">Grup:</label> <span id="lblGroup_Name"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- COMPANY INFORMATION CARD END -->
+      <!-- WORK CENTER INFORMATION CARD START -->
+      <div class="col-sm-12 col-md-6 mb-3">
+        <div class="card shadow-custom border border-custom h-100">
+          <div class="card-header border-bottom bg-gray-200 bg-gradient shadow py-2">
+            <h5 class="mb-0 text-sm lh-base fw-bold">Makine Bilgileri</h5>
+          </div>
+          <div class="card-body py-3 m-0 text-sm text-dark">
+            <div class="mb-1">
+              <label class="text-dark ms-0 fw-bold">Kod :</label> <span id="lbl_code"></span>
+            </div>
+            <div class="mb-1">
+              <label class="text-dark ms-0 fw-bold">Tanım :</label> <span id="lbl_definition">
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- WORK CENTER INFORMATION CARD END -->
+      <!-- WORK CENTER SETTINGS CARD START-->
+      <div class="col-sm-12 col-md-6 mb-3">
+        <div class="card shadow-custom border border-custom h-100">
+          <div class="card-header border-bottom bg-gray-200 bg-gradient shadow py-2">
+            <h6 class="mb-0 text-sm lh-base">Makine Ayarları Bilgileri</h6>
+          </div>
+          <div class="card-body py-3 m-0 text-sm text-dark">
+            <div class="mb-1">
+              <label class="text-dark ms-0 fw-bold">Kalibrasyon:</label> <span id="lbl_calibration"></span>
+            </div>
+            <div class="mb-1">
+              <label class="text-dark ms-0 fw-bold">Kritik İş Merkezi:</label> <span id="lbl_criticalWorkCenter"></span>
+            </div>
+            <div class="mb-1">
+              <label class="text-dark ms-0 fw-bold">Güç Kaynağı:</label> <span id="lbl_powerSource"></span>
+            </div>
+            <div class="mb-1">
+              <label class="text-dark ms-0 fw-bold">İş Bildirimi (jobStatement):</label> <span
+                id="lbl_jobStatement"></span>
+            </div>
+            <div class="mb-1">
+              <label class="text-dark ms-0 fw-bold">Yakıt Kullanımı:</label> <span id="lbl_fuelUsage"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- WORK CENTER SETTINGS CARD END-->
+      <!-- ERP & COST CENTER & REC INFORMATION CARD START -->
+      <div class="col-sm-12 col-md-6 mb-3">
+        <div class="card shadow-custom border border-custom h-100">
+          <div class="card-header border-bottom bg-gray-200 bg-gradient shadow py-2">
+            <h6 class="mb-0 text-sm lh-base">ERP & Maliyet Merkezi & REC Bilgileri</h6>
+          </div>
+          <div class="card-body py-3 m-0 text-sm text-dark">
+            <div class="mb-1">
+              <label class="text-dark ms-0 fw-bold">ERP Kodu:</label> <span id="lbl_ERPCode"></span>
+            </div>
+            <div class="mb-1">
+              <label class="text-dark ms-0 fw-bold">Maliyet Merkezi:</label> <span id="lbl_costCenterName"></span>
+            </div>
+            <div class="mb-1">
+              <label class="text-dark ms-0 fw-bold">RECID:</label> <span id="lbl_RECID"></span>
+            </div>
+            <div class="mb-1">
+              <label class="text-dark ms-0 fw-bold">REC VERSION:</label> <span id="lbl_RECVERSION"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- ERP & COST CENTER & REC INFORMATION CARD END -->
+      <!-- ENERGY CARD START -->
+      <div class="col-sm-12 col-md-6">
+        <div class="card shadow-custom border border-custom h-100">
+          <div class="card-header bg-gradient bg-gray-200 border-bottom shadow py-2">
+            <h6 class="mb-0 text-sm lh-base">Enerji Bilgileri</h6>
+          </div>
+          <div class="card-body py-3 m-0 text-sm text-dark">
+            <div class="mb-1">
+              <label class="text-dark ms-0 fw-bold">Gaz:</label> <span id="lbl_gas_Name"></span>
+            </div>
+            <div class="mb-1">
+              <label class="text-dark ms-0 fw-bold">Su:</label> <span id="lbl_water_Name"></span>
+            </div>
+            <div class="mb-1">
+              <label class="text-dark ms-0 fw-bold">Analizör:</label> <span id="lbl_analyzerID_Name"></span>
+            </div>
+            <div class="mb-1">
+              <label class="text-dark ms-0 fw-bold">Su
+                Sayacı:</label> <span id="lbl_waterMeterID_Name"></span>
+            </div>
+            <div class="mb-1">
+              <label class="text-dark ms-0 fw-bold">Gaz Sayacı:</label> <span id="lbl_gasMeterID_Name"></span>
+            </div>
+            <div class="mb-1">
+              <label class="text-dark ms-0 fw-bold">Yakıt
+                Kullanımı:</label> <span id="lbl_fuelUsage_Name"></span>
+            </div>
+            <div class="mb-1">
+              <label class="text-dark ms-0 fw-bold">Enerji:</label> <span id="lbl_energy_Name"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- ENERGY CARD END -->
+      <!-- SPECIAL CODE CARD START -->
+      <div class="col-sm-12 col-md-6">
+        <div class="card shadow-custom border border-custom h-100">
+          <div
+            class="card-header shadow bg-gray-200 bg-gradient border-bottom d-md-flex align-items-center justify-content-between py-1">
+            <div class="d-flex mb-2 mb-md-0">
+              <h6 class="mb-0 text-sm lh-base">Özel Kod Bilgileri</h6>
+            </div>
+            <div class="btn-group d-flex">
+              <button class="btn btn-icon px-2 py-1 bg-white border border-custom mb-0" data-bs-toggle="modal"
+                data-bs-target="#modalWorkCenters" data-bs-tooltip="tooltip" data-bs-placement="bottom" title="Düzenle"
+                data-container="body" data-animation="true">
+                <span class="btn-inner--icon">
+                  <i class="material-icons text-dark fs-6">
+                    edit
+                  </i>
+                </span>
+              </button>
+            </div>
+          </div>
+          <div class="card-body py-3 m-0 text-sm text-dark">
+            <div class="mb-1">
+              <label class="text-dark ms-0 fw-bold">Tip:</label> <span id="lbl_typeID_Name"></span>
+            </div>
+            <div class="mb-1">
+              <label class="text-dark ms-0 fw-bold">Kategori:</label> <span id="lbl_categoryID_Name"></span>
+            </div>
+            <div class="mb-1">
+              <label class="text-dark ms-0 fw-bold">Marka:</label> <span id="lbl_brandID_Name"></span>
+            </div>
+            <div class="mb-1">
+              <label class="text-dark ms-0 fw-bold">Operatör
+                Tipi:</label> <span id="lbl_operatorTypeID_Name"></span>
+            </div>
+            <div class="mb-1">
+              <label class="text-dark ms-0 fw-bold">workCenterStateID:</label> <span
+                id="lbl_workCenterStateID_Name"></span>
+            </div>
+            <div class="mb-1">
+              <label class="text-dark ms-0 fw-bold">Yazıcı:</label> <span id="lbl_printerID_Name"></span>
+            </div>
+            <div class="mb-1">
+              <label class="text-dark ms-0 fw-bold">Operatör
+                Grubu:</label> <span id="lbl_operatorGroup_Name"></span>
+            </div>
+            <div class="mb-1">
+              <label class="text-dark ms-0 fw-bold">Model:</label> <span id="lbl_model_Name"></span>
+            </div>
+            <div class="mb-1">
+              <label class="text-dark ms-0 fw-bold">Seri
+                Numarası:</label> <span id="lbl_serialNumber_Name"></span>
+            </div>
+            <div class="mb-1">
+              <label class="text-dark ms-0 fw-bold">Üretim
+                Yılı:</label> <span id="lbl_yearOfProduction_Name"></span>
+            </div>
+            <div class="mb-1">
+              <label class="text-dark ms-0 fw-bold">Garanti
+                Bitiş Tarihi:</label> <span id="lbl_warrantyEndDate_Name"></span>
+            </div>
+            <div class="mb-1">
+              <label class="text-dark ms-0 fw-bold">Barkod:</label> <span id="lbl_barcode_Name"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- SPECIAL CODE CARD END -->
+    </div>
+  </div>
+  <!-- DETAIL CARDS END -->
+
+  <!-- MODAL START -->
+  <div class="modal modal-xl fade" id="modalWorkCenters" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    style="z-index: 9999;" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-top" role="document">
+      <div class="modal-content">
+        <!-- MODAL HEADER START  -->
+        <div class="modal-header bg-gradient bg-gray-200 border-bottom shadow py-2">
+          <h6 class="modal-title" id="exampleModalLabel">Özel Kod Bilgileri</h6>
+          <button type="button" class="btn-close text-dark d-flex align-items-center justify-content-center"
+            data-bs-dismiss="modal" aria-label="Close">
+            <span class="fs-4" aria-hidden="true">×</span>
+          </button>
+        </div>
+        <!-- MODAL HEADER END -->
+        <!-- MODAL BODY START -->
+        <div class="modal-body">
+          <div class="row">
+            <form id="formWorkCenters">
+              <div class="col-sm-12">
+                <div class="row">
+                  <div class="col-sm-12 col-md-6">
+                    <div class="row">
+                      <div class="col-12 mb-2 ">
+                        <div class="input-group input-group-static">
+                          <label class="fw-bolder mb-1" id="lbl_id" for="id">Id</label>
+                          <input type="text" class="form-control form-control-sm form-control-custom"
+                            placeholder="Model" id="id" disabled>
+                        </div>
+                      </div>
+                      <div class="col-12 mb-2">
+                        <div class="dropdown-custom">
+                          <label id="lbl_typeID" for="typeID" class="fw-bolder mb-1 ms-0">Tip</label>
+                          <select name="typeID" id="typeID">
+                            <option value="">Lütfen bir seçim yapınız...</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-12 mb-2">
+                        <div class="dropdown-custom">
+                          <label id="lbl_categoryID" for="categoryID" class="fw-bolder mb-1 ms-0">Kategori</label>
+                          <select name="categoryID" id="categoryID">
+                            <option value="">Lütfen bir seçim yapınız...</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-12 mb-2">
+                        <div class="dropdown-custom">
+                          <label id="lbl_brandID" for="brandID" class="fw-bolder mb-1 ms-0">Marka</label>
+                          <select name="brandID" id="brandID">
+                            <option value="">Lütfen bir seçim yapınız...</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-12 mb-2">
+                        <div class="dropdown-custom">
+                          <label id="lbl_operatorTypeID" for="operatorTypeID" class="fw-bolder mb-1 ms-0">Operatör
+                            Tipi</label>
+                          <select name="operatorTypeID" id="operatorTypeID">
+                            <option value="">Lütfen bir seçim yapınız...</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-12 mb-2">
+                        <div class="dropdown-custom">
+                          <label id="lbl_workCenterStateID" for="workCenterStateID"
+                            class="fw-bolder mb-1 ms-0">workCenterStateID</label>
+                          <select name="workCenterStateID" id="workCenterStateID">
+                            <option value="">Lütfen bir seçim yapınız...</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-12 mb-2">
+                        <div class="dropdown-custom">
+                          <label id="lbl_printerID" for="printerID" class="fw-bolder mb-1 ms-0">Yazıcı</label>
+                          <select name="printerID" id="printerID">
+                            <option value="">Lütfen bir seçim yapınız...</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-12 col-md-6">
+                    <div class="row">
+                      <div class="col-12 mb-2">
+                        <div class="input-group input-group-static">
+                          <label class="fw-bolder mb-1" id="lbl_operatorGroup" for="operatorGroup">Operatör
+                            Grubu</label>
+                          <input type="text" class="form-control form-control-sm form-control-custom"
+                            placeholder="Operatör Grubu" id="operatorGroup">
+                        </div>
+                      </div>
+                      <div class="col-12 mb-2">
+                        <div class="input-group input-group-static">
+                          <label class="fw-bolder mb-1" id="lbl_model" for="model">Model</label>
+                          <input type="text" class="form-control form-control-sm form-control-custom"
+                            placeholder="Model" id="model">
+                        </div>
+                      </div>
+                      <div class="col-12 mb-2">
+                        <div class="input-group input-group-static">
+                          <label class="fw-bolder mb-1" id="lbl_serialNumber" for="serialNumber">Seri
+                            Numarası</label>
+                          <input type="text" class="form-control form-control-sm form-control-custom"
+                            placeholder="Seri Numarası" id="serialNumber">
+                        </div>
+                      </div>
+                      <div class="col-12 mb-2">
+                        <div class="input-group input-group-static">
+                          <label class="fw-bolder mb-1" id="lbl_yearOfProduction" for="yearOfProduction">Üretim
+                            Yılı</label>
+                          <input type="number" class="form-control form-control-sm form-control-custom"
+                            placeholder="Üretim Yılı" id="yearOfProduction">
+                        </div>
+                      </div>
+                      <div class="col-12 mb-2">
+                        <div class="input-group input-group-static">
+                          <label class="fw-bolder mb-1" id="lbl_warrantyEndDate" for="warrantyEndDate">Garanti
+                            Bitiş Tarihi</label>
+                          <input type="datetime-local" class="form-control form-control-sm form-control-custom"
+                            placeholder="Garanti Bitiş Tarihi" id="warrantyEndDate">
+                        </div>
+                      </div>
+                      <div class="col-12 mb-2">
+                        <div class="input-group input-group-static">
+                          <label class="fw-bolder mb-1" id="lbl_barcode" for="barcode">Barkod</label>
+                          <input type="text" class="form-control form-control-sm form-control-custom"
+                            placeholder="Barkod" id="barcode">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <!-- MODAL BODY END  -->
+        <!-- MODAL FOOTER START  -->
+        <div class="modal-footer">
+          <button type="button" id="closeWorkCenters"
+            class="btn btn-sm btn-outline-secondary shadow border border-custom m-0 me-2"
+            data-bs-dismiss="modal">Kapat</button>
+          <button type="button" id="submitWorkCenters" class="btn btn-sm bg-gradient btn-brand-color shadow m-0 me-1"
+            onclick="ModalInsertAndUpdate('modalWorkCenters');">Güncelle</button>
+        </div>
+        <!-- MODAL FOOTER END  -->
+      </div>
+    </div>
+  </div>
+  <!-- MODAL END  -->
+
+  <script>
+    var paramssWorkCenterId;
+
+    async function getDataWorkCenters(){
+  await  kartdoldur(paramssWorkCenterId).then(() => {
+        // İşlem tamamlandıktan sonra yapılacak işlemler burada
+        //alert("İşlem tamamlandı!");
+        //initializeGrid("WorkCenterDetails", { "WorkCenterID": paramssWorkCenterId });
+      }).catch(error => {
+        // Hata durumunda yapılacak işlemler burada
+        console.error("Hata oluştu:", error);
+        //alert("Bir hata oluştu. Detaylar için konsolu kontrol edin.");
+      });
+    }
+
+
+    $(document).ready(async function () {
+
+      var urlString = window.location.href;
+      var url = new URL(urlString);
+      var searchParams = url.searchParams;
+
+      // Parametreleri al
+      paramssWorkCenterId = searchParams.get('Id');
+       kartdoldur(paramssWorkCenterId).then( async() =>  {
+        // İşlem tamamlandıktan sonra yapılacak işlemler burada
+        //alert("İşlem tamamlandı!");
+        //initializeGrid("WorkCenterDetails", { "WorkCenterID": paramssWorkCenterId });
+          await dropdownFill("vw_WorkCenters", "-1", "workCenter_topSelect", "Code");
+            $('#workCenter_topSelect').val(paramssWorkCenterId);
+      }).catch(error => {
+        // Hata durumunda yapılacak işlemler burada
+        console.error("Hata oluştu:", error);
+        //alert("Bir hata oluştu. Detaylar için konsolu kontrol edin.");
+      });
+    
+     
+    });
+
+    ModalOpenMethods("WorkCenters", "update", "insert", "defaultFunction2");
+
+
+
+    async function update(data) {
+      console.log(JSON.stringify(data));
+      $('#formWorkCenters #typeID').val(data.typeID);
+      $('#formWorkCenters #categoryID').val(data.categoryID);
+      $('#formWorkCenters #brandID').val(data.brandID);
+      $('#formWorkCenters #operatorTypeID').val(data.operatorTypeID);
+      $('#formWorkCenters #workCenterStateID').val(data.workCenterStateID);
+      $('#formWorkCenters #printerID').val(data.printerID);
+
+    }
+
+    async function insert() {
+    }
+
+    async function defaultFunction2() {
+      $('#workCenterID').val(masterData[0].Id);
+      await dropdownFill('vw_Companies', 'formWorkCenters', 'companyID', 'Name');
+      //await dropdownFillGetByID('vw_SpecialCodes', 'formWorkCenters', 'workCenterDownTimeGroupID', 'Code', "CodeType", SpecialCodeForType.DowntimeCauseGroupID.value);
+      await dropdownFillGetByID('vw_SpecialCodes', 'formWorkCenters', 'typeID', 'Code', "CodeType", SpecialCodeForType.WorkTypeID.value);
+      await dropdownFillGetByID('vw_SpecialCodes', 'formWorkCenters', 'categoryID', 'Code', "CodeType", SpecialCodeForType.Category.value);
+      await dropdownFillGetByID('vw_SpecialCodes', 'formWorkCenters', 'brandID', 'Code', "CodeType", SpecialCodeForType.Brand.value);
+      await dropdownFillGetByID('vw_SpecialCodes', 'formWorkCenters', 'operatorTypeID', 'Code', "CodeType", SpecialCodeForType.OperatorType.value);
+      await dropdownFillGetByID('vw_SpecialCodes', 'formWorkCenters', 'workCenterStateID', 'Code', "CodeType", SpecialCodeForType.MachineState.value);
+      await dropdownFillGetByID('vw_SpecialCodes', 'formWorkCenters', 'printerID', 'Code', "CodeType", SpecialCodeForType.Printer.value);
+      $('#formWorkCenters #id').val(masterData[0].Id);
+    }
+    var masterData;
+
+    async function kartdoldur(Idparameter) {
+      var url = "/Methods/GetByForDropDown";
+      const postData = {
+        body: {
+          "viewName": "vw_WorkCenters",
+          "whereCause": {
+            "Id": Idparameter
+          }
+        }
+      };
+
+      var response = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+          // Diğer isteğe özel başlıkları buraya ekleyebilirsiniz.
+        },
+        body: JSON.stringify(postData)
+      });
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      else {
+        var data = await response.json();
+        masterData = data;
+        console.log("Ana panel Bilgileri :" + JSON.stringify(data[0]));
+        $('#workCenterID').val(data[0].Id);
+        //firma bilgileri
+        $('#lblCompany_Name').html(data[0].CompanyName);
+        $('#lblBranch_Name').html(data[0].BranchName);
+        $('#lblGroup_Name').html(data[0].GroupName);
+        $('#lblDepartment_Name').html(data[0].DepartmentName);
+
+
+        //makine bilgileri
+        $('#lbl_code').html(data[0].Code);
+        $('#lbl_definition').html(data[0].Definition);
+
+        //makine ayarları
+        $('#lbl_calibration').html(data[0].Calibration === true ? "Var" : "Yok");
+        $('#lbl_criticalWorkCenter').html(data[0].CriticalWorkCenter === true ? "Var" : "Yok");
+        $('#lbl_powerSource').html(data[0].PowerSource === true ? "Var" : "Yok");
+        $('#lbl_jobStatement').html(data[0].JobStatement === true ? "Var" : "Yok");
+        $('#lbl_fuelUsage').html(data[0].FuelUsage === true ? "Var" : "Yok");
+
+        //ERP ve Cost CenterName
+
+        $('#lbl_ERPCode').html(data[0].ERPCode);
+        $('#lbl_costCenterName').html(data[0].CostCenterName);
+        $('#lbl_RECID').html(data[0].RECID);
+        $('#lbl_RECVERSION').html(data[0].RECVERSION);
+
+        // Enerji Bilgileri
+        $('#lbl_gas_Name').html(data[0].Gas);
+        $('#lbl_water_Name').html(data[0].Water);
+        $('#lbl_analyzerID_Name').html(data[0].AnalyzerID ?? "-");
+        $('#lbl_waterMeterID_Name').html(data[0].WaterMeterID ?? "-");
+        $('#lbl_gasMeterID_Name').html(data[0].GasMeterID ?? "-");
+        $('#lbl_fuelUsage_Name').html(data[0].FuelUsage ? "Var" : "Yok");
+        $('#lbl_energy_Name').html(data[0].Energy);
+
+        // Özel Kod Tanımları
+        $('#lbl_typeID_Name').html(data[0].WorkCenterType ?? "-");
+        $('#lbl_categoryID_Name').html(data[0].CategoryName ?? "-");
+        $('#lbl_brandID_Name').html(data[0].Marka ?? "-");
+        $('#lbl_operatorTypeID_Name').html(data[0].OperatorTypeName ?? "-");
+        $('#lbl_workCenterStateID_Name').html(data[0].WorkCenterStateName ?? "-");
+        $('#lbl_printerID_Name').html(data[0].Printer ?? "-");
+        $('#lbl_operatorGroup_Name').html(data[0].OperatorGroup ?? "-");
+        $('#lbl_model_Name').html(data[0].Model ?? "-");
+        $('#lbl_serialNumber_Name').html(data[0].SerialNumber ?? "-");
+        $('#lbl_yearOfProduction_Name').html(data[0].YearOfProduction);
+        $('#lbl_warrantyEndDate_Name').html(data[0].WarrantyEndDate ?? "-");
+        $('#lbl_barcode_Name').html(data[0].Barcode ?? "-");
+
+        $('#formWorkCenters #id').val(data[0].Id);
+
+      }
+    }
+
+    function redirectToWorkCenterAnotherPage(page) {
+      window.location.href = `${page}?Id=${paramssWorkCenterId}`;
+    }
+  </script>

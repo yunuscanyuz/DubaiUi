@@ -1,0 +1,40 @@
+version: '3'
+services:
+  # ui:
+  #   platform: linux/amd64  # AMD64 platformunu belirtin
+  #   image: yunuscyuz/energy-ui-amd:v1.0.19
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfileui
+  #   ports:
+  #     - "7215:80"
+
+  api:
+    platform: linux/amd64  # AMD64 platformunu belirtin
+    image: yunuscyuz/ipekismesuii:v1.3.2
+    build:
+      context: .
+      dockerfile: Dockerfileui
+    ports:
+      - "5274:80"
+
+  # dashboard:
+  #   platform: linux/amd64  # AMD64 platformunu belirtin
+  #   image: yunuscyuz/energy-dashboard-amd:v1.0.19
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfiledashboard
+  #   ports:
+  #     - "8042:80"
+
+  # report:
+  #   platform: linux/amd64  # AMD64 platformunu belirtin
+  #   image: yunuscyuz/energy-report-amd:v1.0.19
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfilereportcore
+  #   ports:
+  #     - "5052:80"
+
+
+#docker compose build; & docker image push yunuscyuz/energy-ui-amd:v1.0.19 ; & docker image push yunuscyuz/energy-api-amd:v1.0.19 ; & docker image push yunuscyuz/energy-dashboard-amd:v1.0.19
